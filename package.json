@@ -1,0 +1,31 @@
+{
+  "name": "starter-node-angular",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+     "postinstall": "./node_modules/bower/bin/bower install"
+  },
+  "dependencies": {
+    "body-parser": "~1.4.2",
+    "bower": "^1.7.9",
+    "cloudinary": "1.4.3",
+    "express": "~4.5.1",
+    "express-session": "^1.7.6",
+    "fs": "0.0.1-security",
+    "method-override": "~2.0.2",
+    "mongoose": "~3.8.0",
+    "morgan": "1.7.0",
+    "multer": "1.2.0",
+    "multer-storage-cloudinary": "^1.2.1",
+    "nodemon": "^1.10.2",
+     "socket.io": "1.2.0"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express",
+    "multer",
+    "fs"
+  ],
+  "license": "MIT"
+}

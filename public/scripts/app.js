@@ -1,0 +1,20 @@
+angular.module('cruiseApp',
+ 				[
+ 				'ngRoute', 
+ 				'appRoutes', 
+ 				'MainCtrl', 
+ 				'NerdCtrl', 
+ 				'NerdService', 
+ 				'GeekCtrl', 
+ 				'GeekService',
+ 				'ContactCtrl',
+ 				'ContactService',
+ 				'ProfileCtrl',
+ 				'ProfileService',
+				'ngFileUpload',
+				'ui.bootstrap',
+				'ui.bootstrap.tpls',
+				'angular-loading-bar',
+				'bootstrapLightbox',
+				'angular-thumbnails'
+				 ]);

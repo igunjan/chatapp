@@ -1,0 +1,123 @@
+<div class="container">
+  <div class="geek">
+
+    <div class="logo">
+      <div class="row">
+        <center> <img src="images/showxl_13.png" class="img-responsive" style="max-width:20%"></center>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <input type="text" class="form-control" ng-model="username" placeholder="Enter Nickname">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+      <textarea class="form-control" rows="5" ng-model="description" placeholder="Type your introduction text"></textarea>
+    </div>
+  </div>
+  <div class="input-group">
+    
+    <span class="input-group-addon" id="basic-addon3">Select age</span>
+    <div class="input-field col s5">
+      <select class="form-control" ng-model="age">
+          <option value="" disabled selected>Please select</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+     </select>
+    
+  </div>
+  </div>
+  <br>
+  <div class="input-group">
+    
+    <span class="input-group-btn">
+                  <button class="btn btn-phto" type="button" data-toggle="modal" data-target="#myModal">Add photo</button>
+              </span>
+    <input type="text" class="form-control" value="{{image}}" id="basic-url" aria-describedby="basic-addon3">
+    </div>
+  
+  <br>
+  <br>
+  <div class="form-group">
+    <div class="row">
+    <center> <a href="/contact" class="btn but" ng-click="CreateUser()">ENTER THE CHAT </a> </center>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="pF">
+        <div class="pF_hd">
+          <p> Your Photo </p>
+        </div>
+        <div class="pF_body" style="padding-top:3%">
+          <div class="row">
+            <div class="pf_bodyicons">
+              <div class="row">
+                <!--<div class="col-sm-6">
+                  <div class="row" style="padding-left:60%">
+                    <label for="camera">
+                        <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
+                        <input type="button" id="camera" style="display:none" ng-click="opencamera()">
+                  </label>
+                  </div>
+                </div>-->
+                <div style="margin-left:45%">
+                  <label for="upload">    
+                        <span class="glyphicon glyphicon-open glyopen" aria-hidden="true">
+                          <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB"  id="upload"   style="display:none"/>
+                        </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="padding-top:1%">
+            <div class="pF_bodyimage">
+              <!--<div id="idd"></div>-->
+              <!--<webcam channel="channel" on-streaming="onSuccess()" on-error="onError(err)" on-stream="onStream(stream)"></webcam>-->
+              <!--<canvas id="snapshot" ng-hide="show"></canvas>-->
+
+              <img ngf-thumbnail="file" class="thumb"/>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="pf_bodybtns">
+              <div class="col-sm-12">
+                <!--<select class="btn btn-default btn-block">
+                              <center><option value="volvo">camera</option></center>
+                            </select>-->
+                <button type="button" class="btn btn-default btn-block" ng-click="submit()" style="padding:5%;font-size: 20px;">Send</button>
+              </div>
+              <!--<div class="col-sm-3">
+                <button type="button" class="btn btn-default btn-lg lg1" ng-click="makeSnapshot()"><span class="glyphicon glyphicon-camera"></span></button>
+              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <div>

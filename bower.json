@@ -1,0 +1,13 @@
+{
+  "name": "angular",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery" :"3.1.0",
+    "ng-file-upload": "4.2.4",
+    "bootstrap": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-cloudinary": "^1.2.4",
+    "angular-bootstrap-lightbox": "^0.12.0"
+  }
+}

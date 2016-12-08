@@ -1,0 +1,778 @@
+<div class="container-fluid">
+  <div class="row" style="background-color:#e45454;">
+    <div class="col-xs-3 col-sm-3">
+      <div style="padding-top:5%">
+        <img src="images/showxl.png" style="width:30%" />
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-6">
+       <div class="p_box"> 
+      
+      <div class="row box">
+        <a href="#"> <img src="images/9012.png" class="img-responsive" > </a>
+      </div>
+      <div class="row box">
+        <a href="#"> <img src="images/9012.png" class="img-responsive">  </a>
+      </div>
+      <div class="row box">
+        <a href="#"> <img src="images/9012.png" class="img-responsive"> </a>
+      </div>
+      <div class="row box">
+        <a href="#"> <img src="images/9012.png" class="img-responsive"> </a>
+      </div>
+      <div class="row box">
+        <a href="#"> <img src="images/9012.png" class="img-responsive"> </a>
+      </div>
+      <div class="row box">
+        <a href="#"> <img src="images/9012.png" class="img-responsive"> </a>
+      </div>
+      </div>
+    </div>
+    <div class="col-xs-3 col-sm-3 ">
+      <div class="row live">
+        <div class="col-sm-11" style="padding:0">
+          <a href="#" data-toggle="tab" ng-click="myprofile()">
+            <img src="images/temp/{{userimg}}" id="imgg" class="img-responsive" style='width: 28%;margin:2%;border-radius: 5%; float:right '  />
+          </a>
+        </div>
+        <div class="col-sm-1" style="padding:0">
+          <a href="/"  ng-click="logout()">
+            <img src="images/exit.png" class="img-responsive">
+          </a> 
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  
+
+  </div>
+  <div class="row" style="background-color:#1c9d74; margin-top:1px">
+    <ul class="nav nav-pills usr">
+      <li ng-show="show" style="width:37.5%">
+        <a href="#tab0" data-toggle="tab"><span class="glyphicon glyphicon-user user-icon"></span> {{username}}</a>
+      </li>
+      <li ng-hide="hide" id="nme" style="width:37.5%">
+        <a href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user user-icon"></span> {{user}} </a>
+      </li>
+      <li  style="width:25%">
+        <a href="#" data-toggle="modal" data-target="#myModal5"><span class="glyphicon glyphicon-envelope"></span>   Chats <span class="spncount"> 111 </span></a>
+      </li>
+      <li class="active" style="width:37.5%">
+        <a href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-user user-icon"></span> All Users <span class="spncount">  </span> </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="tab-content">
+       <div class="tab-pane" id="tab0">
+         <div class="row" style="background-color:#e6e6e6;">
+        <div class="row rw">
+          <div class="col-xs-2 col-sm-1 colvv" style="margin-right:-15px;">
+            <div class="colvv1" style="padding-top:18%">
+              <img src="images/temp/{{profileimg}}" class="img-responsive"  style='width: 80%; border-radius: 5px;'>
+              <img src="images/temp/{{profileimg}}" class="img-responsive"  style='width: 80%; border-radius: 5px; margin-top: 5%;'>
+              <a href="#"> <img src="images/9012.png" class="img-responsive" style=' width: 80%; border:solid  black;border-radius: 5px; margin-top: 5%;     padding: 20%; '> </a>
+              
+            </div>
+          </div>
+          <div class="col-xs-5 col-sm-5 colvv">
+            <div style="padding-top:4%">
+              <img src="images/temp/{{profileimg}}" class="img-responsive"  style='width:100%; height:600px;'>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 colvv" style="background-color:#e6e6e6;">
+            <div class="row">
+              <div class="chatheader">
+                <div class="tab-pane" id="cht">
+                  <ul class="list-inline chtul">
+                    <li class="active">
+                      <a href="#" ><img src="images/comments.png" /></a>
+                    </li>
+                    <li style="float:right;">
+                      <a href="#"  ng-click="myprofile()" ><img src="images/sign-out.png" /></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="chatbody">
+                <div class="tab-content">
+                  <div class="tab-pane" id="envelope">
+                    <div class="row search-pane">
+                    </div>
+                  </div>
+                  <div class="tab-pane active" id="comments">
+                    <div class="row search-pane chtcontent">
+                      <i class="fa fa-spin fa-refresh fa-5x" id="loader"></i>
+                      <div class="row" id="userList">
+                        <div ng-repeat="u in users" class="col-sm-12">
+
+                          <div class="row">
+                            <div class="col-xs-2" ng-class-odd="'col-xs-push-10'">
+                              <img title="{{u.user.name.first}}" src="{{u.user.picture}}" class="img-thumbnail img-responsive img-circle" ng-class-even="'pull-right'"
+                                ng-class-odd="'pull-left'" style="width:70px;">
+                            </div>
+                            <div class="col-xs-10" ng-class-odd="'col-xs-pull-2'">
+                              <div class="panel panel-default">
+                                <div class="panel-body">
+                                  {{u.user.text || "hello, how are you"}}<br>
+                                  <!--<span class="label label-default">{{ ||randomDate() | date:'h:mma' }}</span>-->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="input-group btnsend">
+                      <input type="text" class="form-control insend" id="#inputText">
+                      <span class="input-group-btn">
+                                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-open"></span>                      </a>
+                      <!--<a href="#" class="btn btn-default"><span class="glyphicon glyphicon-open"></span> </a>-->
+                      <button class="btn btn-success" type="button" ng-click="doPost()">Send</button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+         </div>
+        <div class="row">
+          <div class="row rowinnr">
+            <h4> user's Bio </h4>
+          </div>
+          <div class="row" style="padding-top:2%;">
+            <div class="form-group fnt">
+              <div class="col-sm-12">
+                <label class="col-sm-2">My Name :</label>
+                <label class="col-sm-10"> {{username}} </label>
+              </div>
+            </div>
+            <div class="form-group fnt">
+              <div class="col-sm-12">
+                <label class="col-sm-2"> My Age :</label>
+                <label class="col-sm-10"> {{age}} </label>
+              </div>
+            </div>
+            <div class="form-group fnt">
+              <div class="col-sm-12">
+                <label class="col-sm-2 control-label">My Location:</label>
+                <label class="col-sm-10"> {{address}}    </label>
+              </div>
+            </div>
+            <div class="form-group fnt">
+              <div class="col-sm-12">
+                <label class="col-sm-2 control-label">My discription :</label>
+                <label class="col-sm-10"> {{description}}  </label>
+
+              </div>
+            </div>
+            <div class="form-group fnt" style="margin-top:25%;">
+              <div class="col-sm-12">
+                <label class="col-sm-2 control-label">My Photos :</label>
+                <div class="col-sm-10">
+                  <div class="phtosbx" ng-repeat="x in getparuserimages">
+
+                    <div class="phtosbxvideo">
+                      <a href="#" ng-click="Lightbox.openModal(getparuserimages, $index)" class="vidclass">
+                        <img src="{{x.url}}" class="img-responsive img-rounded" style="width:100%; height:180px;"> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group fnt" style="margin-top:50%;">
+              <div class="col-sm-12">
+                <label class="col-sm-2 control-label">My videos :</label>
+                <div class="col-sm-10">
+                  <div class="phtosbx" ng-repeat="x in getparuservideos">
+                    <div class="phtosbxvideo">
+                      <a ng-click="Lightbox.openModal(getparuservideos, $index)" class="vidclass">
+                        <!--<img src="{{x.url}}" class="img-responsive img-rounded" style="width:100%; height:200px;  float:left">-->
+                        <thumbnail file-type="{{ x.type }}" source="{{x.url}}" class="thm"></thumbnail>
+                        <!--<thumbnail file-type="video" source="{{x.videoUrl}}"></thumbnail>-->
+                        <span class="glyphicon glyphicon-play-circle"></span> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group fnt" style="margin-top:75%;">
+              <div class="col-sm-12">
+                <label class="col-sm-2 control-label">Show XL Movie's</label>
+                <div class="col-sm-10">
+                  <div class="phtosbx" ng-repeat="x in img5">
+                    <div class="phtosbxvideo">
+                      <a ng-click="Lightbox.openModal(img5, $index)" class="vidclass">
+                        <img src="{{x.source}}" class="img-responsive img-rounded" style="width:100%; height:180px;">
+                        <span class="glyphicon glyphicon-play-circle"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tab1">
+         <div class="row" style="background-color:#e6e6e6;">
+        <div class="row rw">
+          <div class="col-xs-2 col-sm-1 colvv" style="margin-right:-15px;">
+            <div class="colvv1" style="padding-top:18%;">
+              <img src="images/temp/{{userimg}}"  class="img-responsive" style='width: 80%; border-radius: 5px;'>
+                <a href="#"> <img src="images/9012.png" class="img-responsive" style=' width: 80%; border:solid  black;border-radius: 5px; margin-top: 5%;     padding: 20%; '> </a>
+            </div>
+          </div>
+          <div class="col-xs-5 col-sm-5 colvv">
+            <div style="padding-top:4%">
+              <img src="images/temp/{{userimg}}" style='width:100%; height:600px;'>
+              
+            </div>
+          </div>
+          <div class="col-xs-5 col-sm-6 colvv" style="background-color:#e6e6e6;">
+            <div class="row">
+              <div class="chatheader">
+                <div class="tab-pane" id="cht">
+                  <ul class="list-inline chtul">
+                 
+                    <li class="active">
+                      <a href="#comments"><img src="images/comments.png" /></a>
+                    </li>
+                  
+                    <li style="float:right;">
+                      <a href="#tab1" data-toggle="tab" ><img src="images/sign-out.png" /></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="chatbody">
+                <div class="tab-content">
+                  <div class="tab-pane" id="envelope">
+                    <div class="row search-pane">
+                    </div>
+                  </div>
+                  <div class="tab-pane active" id="comments">
+                    <div class="row search-pane chtcontent">
+                      <i class="fa fa-spin fa-refresh fa-5x" id="loader"></i>
+                      <div class="row" id="userList">
+                        <div ng-repeat="u in users" class="col-sm-12">
+
+                          <div class="row">
+                            <div class="col-xs-2" ng-class-odd="'col-xs-push-10'">
+                              <img title="{{u.user.name.first}}" src="{{u.user.picture}}" class="img-thumbnail img-responsive img-circle" ng-class-even="'pull-right'"
+                                ng-class-odd="'pull-left'" style="width:70px;">
+                            </div>
+                            <div class="col-xs-10" ng-class-odd="'col-xs-pull-2'">
+                              <div class="panel panel-default">
+                                <div class="panel-body">
+                                  {{u.user.text || "hello, how are you"}}<br>
+                                  <!--<span class="label label-default">{{ ||randomDate() | date:'h:mma' }}</span>-->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="input-group btnsend">
+                      <input type="text" class="form-control insend" id="#inputText">
+                      <span class="input-group-btn">
+                                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-open"></span>                      </a>
+                      <!--<a href="#" class="btn btn-default"><span class="glyphicon glyphicon-open"></span> </a>-->
+                      <button class="btn btn-success" type="button" ng-click="doPost()">Send</button>
+                      </span>
+                    </div>
+                  </div>
+                 
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+         </div>
+        <div class="row">
+          <div class="row rowinnr">
+            <h4> user's Bio </h4>
+          </div>
+          <div class="row" style="padding-top:2%;">
+            <div class="form-group fnt">
+              <div class="col-sm-12">
+                <label class="col-sm-2">My Name :</label>
+                <label class="col-sm-10"> {{user}} </label>
+              </div>
+            </div>
+            <div class="form-group fnt">
+              <div class="col-sm-12">
+                <label class="col-sm-2"> My Age :</label>
+                <label class="col-sm-10"> {{userage}} </label>
+              </div>
+            </div>
+            <div class="form-group fnt">
+              <div class="col-sm-12">
+                <label class="col-sm-2 control-label">My Location:</label>
+                <label class="col-sm-10"> {{loc}}    </label>
+              </div>
+            </div>
+            <div class="form-group fnt">
+              <div class="col-sm-12">
+                <label class="col-sm-2 control-label">My discription :</label>
+                <label class="col-sm-10"> {{des}} <a href="#" data-toggle="modal" data-target="#myModal3" >Click here to edit my description </a>
+                </label>
+
+              </div>
+            </div>
+            <div class="form-group fnt" style="margin-top:25%;">
+              <div class="col-sm-12">
+                <label class="col-sm-2 control-label">My Photos :</label>
+                <div class="col-sm-10">
+                  <div class="phtosbx" ng-repeat="x in getimages">
+
+                    <div class="phtosbxvideo">
+                      <a href="#" ng-click="Lightbox.openModal(getimages, $index)" class="vidclass">
+                        <img src="{{x.url}}" class="img-responsive img-rounded" style="width:100%; height:180px;"> </a>
+                      <a href="#" class="btn btn-danger btn-xs vdioanc" ng-click="remimage($index)">Delete </a>
+                    </div>
+                  </div>
+                  <div class="phtosbx">
+                    <div class="phtosbximg1">
+                      <a href="#" data-toggle="modal" data-target="#myModal"> <img src="images/add.png" align="middle" class="img-thumbnail img-responsive img-rounded">
+                        <div style="padding-top:5%"> Add New Photo </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group fnt" style="margin-top:50%;">
+              <div class="col-sm-12">
+                <label class="col-sm-2 control-label">My videos :</label>
+                <div class="col-sm-10">
+                  <div class="phtosbx" ng-repeat="x in getvideos">
+                    <div class="phtosbxvideo">
+                      <a ng-click="Lightbox.openModal(getvideos, $index)" class="vidclass">
+                        <!--<img src="{{x.url}}" class="img-responsive img-rounded" style="width:100%; height:200px;  float:left">-->
+                        <thumbnail file-type="{{ x.type }}" source="{{x.url}}" class="thm"></thumbnail>
+                        <!--<thumbnail file-type="video" source="{{x.videoUrl}}"></thumbnail>-->
+
+                        <span class="glyphicon glyphicon-play-circle"></span> </a>
+                      <a href="#" class="btn btn-danger btn-xs vdioanc" ng-click="remvideo($index)">Delete </a>
+                    </div>
+                  </div>
+                  <div class="phtosbx">
+                    <div class="phtosbximg1">
+                      <a href="#" data-toggle="modal" data-target="#myModal2"> <img src="images/add.png" align="middle" class="img-thumbnail img-responsive img-rounded">
+                        <div style="padding-top:5%"> Add New video </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group fnt" style="margin-top:75%;">
+              <div class="col-sm-12">
+                <label class="col-sm-2 control-label">Show XL Movie's</label>
+                <div class="col-sm-10">
+                  <div class="phtosbx" ng-repeat="x in img5">
+                    <div class="phtosbxvideo">
+                      <a ng-click="Lightbox.openModal(img5, $index)" class="vidclass">
+                        <img src="{{x.source}}" class="img-responsive img-rounded" style="width:100%; height:180px;">
+                        <span class="glyphicon glyphicon-play-circle"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane active" id="tab3">
+        <div class="col-sm-6">
+          <div class="newmesages" style="padding:5%;">
+            <div id="messages"  class="col-sm-12" style="overflow:auto;">
+                
+          
+            </div>
+          </div>
+          <div class="input-group btnsend">
+            <input type="text" class="form-control insend" id="inputText" autofocus>
+            <span class="input-group-btn">
+                                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-open"></span>            </a>
+            <!--<a href="#" class="btn btn-default"><span class="glyphicon glyphicon-open"></span> </a>-->
+            <button class="btn btn-success" type="button" id="btngpchat">Send</button>
+            </span>
+          </div>
+        
+        </div>
+         <div class="col-sm-6">
+            <div class="userstab">
+            <div class="userstabul">
+              <ul class="list-inline">
+                <li class="active">
+                  <a href="#newonline1" data-toggle="tab"> {{count}} New </a>
+                </li>
+                <li><a href="#age2" data-toggle="tab">Age</a>
+                </li>
+                 <li><a href="#age2" data-toggle="tab">List</a>
+                </li>
+                <li><a href="#distance4" data-toggle="tab">Regio</a>
+                </li>
+                <li><a href="#livenow3" data-toggle="tab">Cam</a>
+                </li>
+                <li><a href="#search7" data-toggle="tab">Search</a>
+                </li>
+              </ul>
+            </div>
+            <div class="tab-content" style="height:704px;overflow:auto;">
+              <div class="tab-pane active" id="newonline1">
+                <div class="row search-pane">
+                  <div class="chtboxuserul" ng-repeat="x in getusers">
+                    <div class="chtboxuserulli">
+                      <a href="#" data-toggle="modal" data-target="#myModal4" ng-click="openuser(x._id)">          
+                        <div style="height:210px; background:url(images/temp/{{x.profileimg}}); background-size:100% 210px;;background-repeat: no-repeat; position:relative">
+                          <div class="imgtxt">
+                            <span style="color:white;font-size:36px; padding-left: 7px;">{{x.age + 'y'}} |</span>
+                            <span style="color:white">{{x.username}} </span>
+                            <!--<span style="color:white;"><img src="images/video-camera.png">  Live </span>-->
+                            <!--<span class="glyphicon glyphicon-eye-open" style="color:white"> </span>-->
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="age2">
+                <div class="row search-pane">
+                  <div class="chtboxuserul" ng-repeat="x in getusers  | orderBy:'age'">
+                    <div class="chtboxuserulli">
+                      <a href="#">
+                        <div style="height:180px; background:url(images/temp/{{x.profileimg}}); background-size:100%;background-repeat: no-repeat; position:relative">
+                          <div class="imgtxt">
+                            <span style="color:white;font-size:36px; padding-left: 7px;">{{x.age + 'y'}} |</span>
+                            <span style="color:white">{{x.username}} </span>
+                            <!--<span style="color:white;"><img src="images/video-camera.png">  Live </span>-->
+                            <!--<span class="glyphicon glyphicon-eye-open" style="color:white"> </span>-->
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="livenow3">
+                <div class="row search-pane">
+                  <div class="chtboxuserul" ng-repeat="x in getusers">
+                    <div class="chtboxuserulli">
+                      <a href="#" ng-click="openuser(x._id)">
+                        <div style="height:180px; background:url(images/temp/{{x.profileimg}}); background-size:100%;background-repeat: no-repeat; position:relative">
+                          <div class="imgtxt">
+                            <span style="color:white;font-size:36px; padding-left: 7px;">{{x.age + 'y'}} |</span>
+                            <span style="color:white">{{x.username}} </span>
+                            <!--<span style="color:white;"><img src="images/video-camera.png">  Live </span>-->
+                            <!--<span class="glyphicon glyphicon-eye-open" style="color:white"> </span>-->
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="distance4">
+                <div class="row search-pane">
+                  <div class="chtboxuserul" ng-repeat="x in img">
+                    <!--<div class="chtboxuserulli">
+                    <a href="#">
+                      <div><img src="{{x.source}}" style="width:100%; height:180px;"></div>
+                      <div>
+                        <span class="glyphicon glyphicon-star" style="color:black"> username </span></div>
+                      <div>
+                        <span style="color:grey;"><img src="images/video-camera.png">  Live </span>
+                        <span class="glyphicon glyphicon-eye-open" style="color:grey">  </span>
+                      </div>
+                    </a>
+                  </div>-->
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="search7">
+                <div class="row search-pane">
+                  <div class="form-group">
+                    <input type="text" class="form-control insearch" ng-model="test">
+                  </div>
+                  <div class="chtboxuserul" ng-repeat="x in getusers | filter:test">
+                    <div class="chtboxuserulli">
+                      <a href="#" ng-click="openuser(x._id)">
+                        <div style="height:180px; background:url(images/temp/{{x.profileimg}}); background-size:100%;background-repeat: no-repeat; position:relative">
+                          <div class="imgtxt">
+                            <span style="color:white;font-size:36px; padding-left: 7px;">{{x.age + 'y'}} |</span>
+                            <span style="color:white">{{x.username}} </span>
+                            <!--<span style="color:white;"><img src="images/video-camera.png">  Live </span>-->
+                            <!--<span class="glyphicon glyphicon-eye-open" style="color:white"> </span>-->
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  <!--<div style="height:60px;">
+  </div>-->
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="pF">
+        <div class="pF_hd">
+          <p> Your Photo </p>
+        </div>
+        <div class="pF_body" style="padding-top:3%">
+          <div class="row">
+            <div class="pf_bodyicons">
+              <div class="row">
+                <!--<div class="col-sm-6">
+                  <div class="row" style="padding-left:60%">
+                    <label for="camera">
+                        <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
+                        <input type="file" id="camera" style="display:none">
+                  </label>
+                  </div>
+                </div>-->
+                <!--<div class="col-sm-6">-->
+                <div style="margin-left:45%">
+                  <label for="upload">
+                        <span class="glyphicon glyphicon-open glyopen" aria-hidden="true">
+                          <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB"  id="upload"   style="display:none"/>
+                        </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="pF_bodyimage">
+              <img ngf-thumbnail="file" class="thumb"  style="width: 100%"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="pf_bodybtns">
+              <div class="col-sm-12">
+                <!--<select class="btn btn-default btn-block">
+                              <center><option value="volvo">camera</option></center>
+                            </select>-->
+                <button type="button" class="btn btn-default btn-block" ng-click="submit()" style="padding:5%; font-size:20px">Send</button>
+              </div>
+              <!--<div class="col-sm-3">
+                <button type="button" class="btn btn-default btn-lg lg1"><span class="glyphicon glyphicon-camera"></span></button>
+              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal2" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="pF">
+        <div class="pF_hd">
+          <p> Your Video </p>
+        </div>
+        <div class="pF_body" style="padding-top:3%">
+          <div class="row">
+            <div class="pf_bodyicons">
+              <div class="row">
+                <!--<div class="col-sm-6">
+                  <div class="row" style="padding-left:60%">
+                    <label for="camera">        
+                        <span> <img src="images/facetime-button.png"></span>
+                        <input type="file" id="camera" style="display:none">
+                  </label>
+                  </div>
+                </div>-->
+                <!--<div class="col-sm-6">-->
+                <div style="margin-left:45%">
+                  <label for="uploadvideo">
+                        <span class="glyphicon glyphicon-open glyopen" aria-hidden="true">
+                          <input type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="video/*" ngf-max-height="1000"  id="uploadvideo"  style="display:none"/>
+                        </span>
+                  </label>
+                </div>
+                <!--</div>-->
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="pF_bodyimage">
+              <div id="videoid">
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="pf_bodybtns">
+              <!--<div class="col-sm-9">-->
+              <div class="col-sm-12">
+                <!--<select class="btn btn-default btn-block">
+                              <center><option value="volvo">video</option></center>
+                            </select>-->
+                <button type="button" class="btn btn-default btn-block" ng-click="videoupload()" style="padding:5%;font-size: 20px;">Send</button>
+              </div>
+              <!--<div class="col-sm-3">
+                <button type="button" class="btn btn-default btn-lg lg1"><span> <img src="images/facetime-button.png"> </span></button>
+              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal3" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="pF">
+        <div class="pF_hd">
+          <p> Description </p>
+        </div>
+        <div style="margin:5%">
+          <div class="row">
+            <div class="form-group">
+              <div class="row">
+                <textarea class="form-control" rows="17" ng-model="des" placeholder="Type your introduction text">{{des}}</textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <center> <a href="#" class="btn btn-default btn-block" ng-click="UpdateUser()">Edit</a> </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal4" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content" style="height: 700px">
+      <div class="pF" style="border:none">
+        <div class="pF_hd">
+          <p> Profile </p>
+        </div>
+       <div class="row"  style="overflow:auto;height:124%">
+          <div class="row" >
+              <div>
+                <img  class="img-responsive" src="images/temp/{{profileimg}}" style="width:100% ;padding:5%">
+              </div>
+          </div>
+          <div class="row">
+              <div><h2 style="color:grey; text-align:center"> {{username}} {{age}} Year</h2></div>
+              <div><h2 style="color:grey; text-align:center"> {{address}}</h2></div>
+              <div style="color:Lightgrey; text-align:center"> {{description}}</div>
+          </div>
+          <div class="row" style="padding-top:5%">
+            <div class="form-group">
+              <center> 
+                <span> <a href="#" class="btn"  ng-click="openprivatecht()"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a> </span>
+                <span> <a href="#" class="btn"><i class="fa fa-video-camera fa-3x" aria-hidden="true"></i></a> </span>
+                <span> <a href="#" class="btn"  ng-click="openprivatecht()"><i class="fa fa-picture-o fa-3x" aria-hidden="true"></i></a> </span>
+                <span> <a href="#" class="btn"  ng-click="openprivatecht()"><i class="fa fa fa-film fa-3x" aria-hidden="true"></i></a> </span>
+               </center>   
+            </div>
+            <div class="form-group mdal4btn">
+              <center> <a href="#" class="btn btn-block mdal4btnbordr" ng-click="openprivatecht()">Private Chat</a> </center>
+            </div>
+            <div class="form-group mdal4btn">  
+              <center> <a href="#" data-dismiss="modal" class="btn  btn-block mdal4btnbordr1">Close</a> </center>
+            </div>
+          </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal5" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content" style="overflow:auto;height: 600px ;background-color: #e6e6e6;">
+      <div class="pF" style="border:none">
+        <div class="pF_hd">
+          <p> New Messages </p>
+        </div>
+       
+            
+          <div class="newmesages" style="overflow:auto; height:100%">
+            <div style="padding-top:5%">
+              <div ng-repeat="u in users" class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <img title="{{u.user.name.first}}" src="{{u.user.picture}}" class="img-thumbnail img-responsive img-circle" style="width:70px;"> 
+                  </div>
+                  <div class="col-sm-10">
+                    <div class="panel panel-default">
+                      <div style="padding:5%">
+                        {{u.user.text || "hello, how are you"}}
+                        <span style="border:1px solid #1c9d74 ;border-radius:50%; color:#1c9d74 ;float:right ;font-size: 15px;"> 11</span>
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+        
+              
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script>
+      var socket = io();
+      $('#btngpchat').click(function(){
+        socket.emit('chat message', $('#inputText').val());
+        $('#inputText').val('');
+        console.log('s')
+        return false;
+      });
+      socket.on('chat message', function(msg){
+     
+        var ig = 'showxl_09.png'
+        // var imguser = $('#imgg').attr('src')
+        $('#messages').append('<div class="row"><div class="col-sm-2"><img src="images/'+ig+'" class="img-thumbnail img-responsive img-circle" style="width:70px;"></div><div class="col-sm-10"><div class="panel panel-default"><div class="panel-body"><p>'+ msg +' </p> </div></div></div> </div>');
+       $('.newmesages').prop({
+        scrollTop: $('.newmesages')[0].scrollHeight}, 1000);
+      });
+      </script>
