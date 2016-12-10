@@ -1,7 +1,8 @@
-angular.module('ProfileCtrl', []).controller('ProfileController', function ($scope,$location, Upload, $http, Lightbox,$compile, $timeout, $rootScope) {
+angular.module('ProfileCtrl', []).controller('ProfileController', function ($scope,$location, Upload,Geek,Profile, $http, Lightbox,$compile, $timeout, $rootScope) {
 
- $rootScope.userimg;
- $rootScope.user
+ 
+ 
+ 
     $scope.img3 = [
         { source: 'images/cht/img1.jpg' },
          { source: 'images/cht/img3.jpg' },
@@ -10,7 +11,7 @@ angular.module('ProfileCtrl', []).controller('ProfileController', function ($sco
         //  { source: 'images/cht/img4.jpg' },
     ];
 
- 
+    $scope.data;
    $http.get('/getprofile').success(function (response) {
         if (response)
         $scope.user = response.username;
@@ -19,19 +20,53 @@ angular.module('ProfileCtrl', []).controller('ProfileController', function ($sco
         $scope.loc = response.address;
         $scope.userimg = response.profileimg;
         $scope.data = response._id;
+         var prodata = {
+            name: response.username,
+            image: response.profileimg,
+        }
+        Profile.setData(prodata);
     });
-    
-//  var socket = io();
-//       $('#btngpchat').click(function(){
-//         socket.emit('chat message', $('#inputText').val());
-//         $('#inputText').val('');
-//         console.log('s')
-//         return false;
-//       });
-//       socket.on('chat message', function(msg){
-//           angular.element('#messages').append('<div class="row"><div class="col-xs-2"><img src="images/temp/{{userimg}}" class="img-thumbnail img-responsive img-circle" style="width:70px;"></div></div>');
-//       });
 
+    $timeout(function(){
+        var socket = io.connect('http://62.75.150.140:8080');
+
+            // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
+            
+            $scope.profiledata = Profile.getData();
+             var pseudo = $scope.profiledata.image
+            socket.emit('nouveau_client', pseudo);
+            document.title = pseudo + ' - ' + document.title;                	 
+            
+
+            // Quand on reçoit un message, on l'insère dans la page
+            socket.on('message', function(data) {
+                insereMessage(data.pseudo, data.message)
+            })
+
+            // Quand un nouveau client se connecte, on affiche l'information
+
+          
+              $('#btngpchat').click(function(){
+                var message = $('#inputText').val();
+            
+              insereMessage(pseudo, message);
+              socket.emit('message',message );
+              $('#inputText').val('').focus();;
+              return false;
+            });
+
+            // Ajoute un message dans la page
+            function insereMessage(data, message) {
+                $('#messages').append('<div class="row"><div class="col-sm-2"><img src="images/temp/'+data+'" class="img-thumbnail img-responsive img-circle" style="width:70px;"></div><div class="col-sm-10"><div class="panel panel-default"><div class="panel-body" id="nw"><p>'+ message +' </p> </div></div></div> </div>');
+            $('.newmesages').prop({scrollTop: $('.newmesages')[0].scrollHeight}, 1000);
+            }
+
+            socket.on('nouveau_client', function(data) {
+                    console.log(data);
+                $('#messages').append('<div class="row"><div class="col-sm-2"><img src="images/temp/'+data+'" class="img-thumbnail img-responsive img-circle" style="width:70px;"></div><div class="col-sm-10"><div class="panel panel-default"><div class="panel-body" id="nw"> <p> join the Chat !</em> </p> </div></div></div> </div>');
+            })
+   }, 2000);
+   
     $scope.logout = function(){
         $http.get('/logout');
     }

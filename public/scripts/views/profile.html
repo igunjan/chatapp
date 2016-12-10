@@ -760,19 +760,23 @@
 </div>
 
       <script>
-      var socket = io();
-      $('#btngpchat').click(function(){
-        socket.emit('chat message', $('#inputText').val());
-        $('#inputText').val('');
-        console.log('s')
-        return false;
-      });
-      socket.on('chat message', function(msg){
+      // var socket = io();
+      // $('#btngpchat').click(function(){
+      //   socket.emit('chat message', $('#inputText').val());
+      //   $('#inputText').val('');
+      //   console.log('s')
+      //   return false;
+      // });
+      // socket.on('chat message', function(msg){
      
-        var ig = 'showxl_09.png'
-        // var imguser = $('#imgg').attr('src')
-        $('#messages').append('<div class="row"><div class="col-sm-2"><img src="images/'+ig+'" class="img-thumbnail img-responsive img-circle" style="width:70px;"></div><div class="col-sm-10"><div class="panel panel-default"><div class="panel-body"><p>'+ msg +' </p> </div></div></div> </div>');
-       $('.newmesages').prop({
-        scrollTop: $('.newmesages')[0].scrollHeight}, 1000);
-      });
+      //   var ig = 'showxl_09.png'
+      //   // var imguser = $('#imgg').attr('src')
+      //   $('#messages').append('<div class="row"><div class="col-sm-2"><img src="images/'+ig+'" class="img-thumbnail img-responsive img-circle" style="width:70px;"></div><div class="col-sm-10"><div class="panel panel-default"><div class="panel-body"><p>'+ msg +' </p> </div></div></div> </div>');
+      //  $('.newmesages').prop({
+      //   scrollTop: $('.newmesages')[0].scrollHeight}, 1000);
+      // });
+
+
+
+         
       </script>

@@ -10,8 +10,11 @@ var db = require('./config/db');
 var morgan = require('morgan');
 var session = require('express-session');
 var http = require('http').Server(app);
+var ent = require('ent');
 
 var io = require('socket.io')(http);
+
+var   fs = require('fs');
 
 // cloudinary.config({
 //   cloud_name: 'salmansajid',
@@ -60,10 +63,20 @@ mongoose.connect(db.url, function (err, res) {
         res.sendfile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
     });
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
+io.sockets.on('connection', function (socket) {
+  
+    socket.on('nouveau_client', function(pseudo) {
+        pseudo = ent.encode(pseudo);
+        socket.pseudo = pseudo;
+        socket.broadcast.emit('nouveau_client',pseudo);
+    });
+
+    // Dès qu'on reçoit un message, on récupère le pseudo de son auteur et on le transmet aux autres personnes
+    socket.on('message', function (message) {
+        message = ent.encode(message);
+        socket.broadcast.emit('message', {pseudo: socket.pseudo, message: message});
+
+    }); 
 });
 // start app ===============================================
 
