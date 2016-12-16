@@ -10,20 +10,64 @@ angular.module('ContactCtrl',[])
 		$scope.map = '';
 
 		$scope.geocodePosition = function(pos) {
+			function getLatLong(){
+				var options = {
+					enableHighAccuracy: true,
+					timeout: 5000,
+					maximumAge: 0
+				};
+				function success(pos) {
+				  var crd = pos.coords;
+					  var geocoder = new google.maps.Geocoder();
+					  var latlng = new google.maps.LatLng(crd.latitude, crd.longitude);
+					  geocoder.geocode({
+					  	'latLng': latlng
+					  },function(result,status){
+					  	if (status == google.maps.GeocoderStatus.OK){
+					  		if(result[0]){
+					  			var add= result[0].formatted_address ;
+					  			var  value=add.split(",");
+								var	count=value.length;
+								document.getElementById('city').innerHTML = value[count-3]
+								document.getElementById('country').innerHTML = value[count-1]
+					  			
+								
+								var mapOptions = {
+								  zoom: 13,
+								  center: latlng,
+								  mapTypeId: google.maps.MapTypeId.ROADMAP
+								}
+								var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-			geocoder.geocode({
-				latLng: pos
-			}, function(responses) {
-			  console.log(responses.length)
-				if (responses && responses.length > 0) {
-					$scope.updateMarkerAddress(responses[0]);
-				} else {
-					$scope.error = 'I feel free..!!!';
-				}
-				$scope.address.contact = $scope.address.city +','+ $scope.address.country;
-			});
-			
+								var marker = new google.maps.Marker({
+								    position: latlng,
+								    title:add,
+								    draggable: true
+								});
+
+								marker.setMap(map)
+
+					  		}else{
+					  			console.log('no location found')
+					  		}
+					  	}else{
+					  		console.log('no location found')
+					  	}
+					  	
+					  });
+				};
+
+				function error(err) {
+				  //console.warn('ERROR(' + err.code + '): ' + err.message);
+				};
+
+				navigator.geolocation.getCurrentPosition(success, error, options);
+			}
+
+			getLatLong();	
 		};	
+
+		$scope.geocodePosition();
 
 		
 	
