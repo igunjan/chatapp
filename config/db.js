@@ -1,4 +1,5 @@
 module.exports = {
-	url :'mongodb://127.0.0.1:27017/cruise'
-	// url :'mongodb://test:test@ds041939.mlab.com:41939/cruise'
+	//url :'mongodb://127.0.0.1:27017/cruise'
+	url :'mongodb://root:password_1234@ds133358.mlab.com:33358/chatapp'
+			
 }
